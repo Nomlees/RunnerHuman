@@ -1,6 +1,7 @@
 package ru.kev.runnerman.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 public class Man {
@@ -11,13 +12,14 @@ public class Man {
 
     private Vector3 position;
     private Vector3 velosity;
-
     private Texture man;
+    private Rectangle boundsMan;
 
     public Man(int x, int y) {
-        position = new Vector3(0,y,0);
+        position = new Vector3(x,y,0);
         velosity = new Vector3(0,0,0);
         man = new Texture("RunMan.png");
+        boundsMan = new Rectangle(x,y, man.getWidth(), man.getHeight());
     }
 
     public Vector3 getPosition() {
@@ -36,10 +38,15 @@ public class Man {
         if (position.y < 110 )
             position.y = 110;
         velosity.scl(1 / dt);
-
+        boundsMan.setPosition(position.x , position.y);
     }
+
 
     public void jump() {
         velosity.y = 270;
+    }
+
+    public Rectangle getBoundsMan() {
+        return boundsMan;
     }
 }
