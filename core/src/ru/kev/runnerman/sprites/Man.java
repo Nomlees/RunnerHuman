@@ -43,7 +43,7 @@ public class Man {
 
 
     public void jump() {
-        velosity.y = 270;
+        velosity.y = 200;
     }
 
     public Rectangle getBoundsMan() {
