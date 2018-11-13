@@ -8,7 +8,7 @@ public class Man {
 
     private static final int MOVEMENT = 100;
 
-    private static final int GRAVITY = -10;
+    private static final int GRAVITY = -20;
 
     private Vector3 position;
     private Vector3 velosity;
@@ -20,6 +20,8 @@ public class Man {
         velosity = new Vector3(0,0,0);
         man = new Texture("RunMan.png");
         boundsMan = new Rectangle(x,y, man.getWidth(), man.getHeight());
+        boundsMan.width = 60;
+        boundsMan.height = 60;
     }
 
     public Vector3 getPosition() {
@@ -31,19 +33,24 @@ public class Man {
     }
 
     public void update(float dt) {
-        if (position.y > 0 )
+        if (position.y > 0)
             velosity.add(0 , GRAVITY , 0);
             velosity.scl(dt);
             position.add(MOVEMENT * dt,velosity.y, 0);
         if (position.y < 110 )
             position.y = 110;
+        if (position.y > 480-60) {
+            position.y =480 - 60;
+        }
+
+
         velosity.scl(1 / dt);
         boundsMan.setPosition(position.x , position.y);
     }
 
 
     public void jump() {
-        velosity.y = 200;
+        velosity.y = 300;
     }
 
     public Rectangle getBoundsMan() {
