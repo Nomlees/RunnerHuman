@@ -14,7 +14,7 @@ public class Money {
     public static final int  MONEY_GAP = 50;
     public static final int LOWEST_OPENING = 100;
 
-    public static final int MONEY_WIDTH = 100;
+    public static final int MONEY_WIDTH = 150;
 
     private Texture topMoney , botMoney;
     private Vector2 posTopMoney, posBotMoney;
@@ -62,6 +62,7 @@ public class Money {
 
     public void dispose() {
         botMoney.dispose();
+
 //        topMoney.dispose();
     }
 

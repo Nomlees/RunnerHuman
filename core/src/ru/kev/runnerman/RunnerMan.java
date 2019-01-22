@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 import ru.kev.runnerman.states.GameStateManager;
 import ru.kev.runnerman.states.MenuState;
+import ru.kev.runnerman.states.PlayState;
 
 
 public class RunnerMan extends ApplicationAdapter {
@@ -37,7 +38,7 @@ public class RunnerMan extends ApplicationAdapter {
 		music.play();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		batch = new SpriteBatch();
-		gsm.push(new MenuState(gsm));
+		gsm.push(new PlayState(gsm));
 
 	}
 
@@ -49,7 +50,7 @@ public class RunnerMan extends ApplicationAdapter {
 
 		gsm.render(batch);
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
