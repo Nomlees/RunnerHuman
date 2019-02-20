@@ -6,20 +6,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import ru.kev.runnerman.RunnerMan;
 
-public class MenuState extends State {
+/**
+ * Окно которое открывается после проигрыша
+ */
+public class GameOver extends State {
 
     private Texture background;
-    private Texture playBtn;
-    private Texture menuMan;
+    private Texture over;
 
-    public MenuState(GameStateManager gsm) {
+
+    public GameOver(GameStateManager gsm) {
         super(gsm);
         camera.setToOrtho(false, RunnerMan.WIDTH, RunnerMan.HEIGHT);
         background = new Texture("interface.png");
-        playBtn = new Texture("playbtn.png");
-        menuMan = new Texture("menuMan.png");
+        over = new Texture("playbtn.png");
     }
-
     @Override
     public void handleInput() {
         if(Gdx.input.justTouched()){
@@ -39,8 +40,8 @@ public class MenuState extends State {
 
         sb.begin();
         sb.draw(background, 0, 0);//рисуется фон
-        sb.draw(playBtn, camera.position.x - playBtn.getWidth() / 2, camera.position.y - playBtn.getHeight() /2);
-        sb.draw(menuMan, 25, camera.position.y - menuMan.getHeight() /6 );
+        sb.draw(over, camera.position.x - over.getWidth() / 2, camera.position.y - over.getHeight() /2);
+
         sb.end();
 
     }
@@ -48,9 +49,8 @@ public class MenuState extends State {
     @Override
     public void dispose() {
         background.dispose();
-        playBtn.dispose();
-        menuMan.dispose();
-        System.out.println("MenuState Disposed");
+        over.dispose();
+        System.out.println("GameOver Disposed");
 
     }
 }
